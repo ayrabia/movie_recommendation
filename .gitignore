@@ -1,0 +1,16 @@
+# Python bytecode caches — regenerated automatically, not source
+__pycache__/
+*.pyc
+
+# Virtual environments — machine-specific, recreated from requirements.txt
+.venv/
+venv/
+
+# Secrets / local config — never commit keys or local overrides
+.env
+
+# macOS filesystem clutter
+.DS_Store
+
+# Private session/progress notes (not for the public repo)
+MEMORY.md
