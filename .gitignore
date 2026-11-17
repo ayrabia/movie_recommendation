@@ -14,3 +14,6 @@ venv/
 
 # Private session/progress notes (not for the public repo)
 MEMORY.md
+
+# Dataset files (downloaded, not committed) — see README for how to fetch
+data/
