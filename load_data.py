@@ -6,6 +6,10 @@ def load_movies(path = "data/ml-latest-small/ml-latest-small/movies.csv"):
     df["genres"] = df["genres"].str.split("|")
     return df
 
+def load_ratings(path ="data/ml-latest-small/ml-latest-small/ratings.csv"):
+    df = pd.read_csv(path)
+    return df
+
 
 
 if __name__ == "__main__":

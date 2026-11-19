@@ -1,9 +1,11 @@
-from load_data import load_movies
+from load_data import load_movies,  load_ratings
 from queries import find_by_title, movies_in_genre
+from recommendations import most_popular
 
 def main():
     #load the user input
     df = load_movies()
+    ratings = load_ratings()
 
     print("Movie Explorer")
     print("Commands: search <title>, genre <genre>, help, quit")
@@ -25,6 +27,10 @@ def main():
             print("search <title> - search a movie by it's title")
             print("genre <genre> - search for movies in a genre")
             print("quit - exit the program")
+
+        elif command == "popular":
+            result = most_popular(ratings, df)
+            print(result.to_string(index=False))
 
         elif command in ["search", "genre"]:
             #if no title or genre is included
