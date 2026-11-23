@@ -1,6 +1,6 @@
 from load_data import load_movies,  load_ratings
 from queries import find_by_title, movies_in_genre
-from recommendations import most_popular
+from recommendations import most_popular, recommend_for_user
 
 def main():
     #load the user input
@@ -8,7 +8,7 @@ def main():
     ratings = load_ratings()
 
     print("Movie Explorer")
-    print("Commands: search <title>, genre <genre>, help, quit")
+    print("Commands: search <title>, genre <genre>, popular, recommend <userId>, help, quit")
 
     while True:
         user_input = input("\nEnter a Command: ").strip()
@@ -26,11 +26,24 @@ def main():
         elif command == "help":
             print("search <title> - search a movie by it's title")
             print("genre <genre> - search for movies in a genre")
+            print("popular - show the 10 most popular movies")
+            print("recommend <userId> - suggest movies based on what a user has rated")
             print("quit - exit the program")
 
         elif command == "popular":
             result = most_popular(ratings, df)
             print(result.to_string(index=False))
+
+        elif command == "recommend":
+            if len(parts) < 2:
+                print("Please include a user ID (e.g. recommend 1)")
+                continue
+            user_input = parts[1]
+            if not user_input.isdigit():
+                print("User IDs are numbers - try recommend 1")
+                continue
+            result = recommend_for_user(int(user_input), ratings, df)
+            print(result.to_string(index = False))
 
         elif command in ["search", "genre"]:
             #if no title or genre is included
